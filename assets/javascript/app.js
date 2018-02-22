@@ -4,15 +4,15 @@ $(document).ready(function () {
 //unanswered questions, time remaining, a boolean answered, interval, 
 //index to load new question and answers with reloading the page, and object variable for the actual game
 
-var correctAnswers = 0, 
-    incorrectAnswers = 0, 
-    unansweredQuestions = 0,    
-    timeRemaining = 10; 
-    intervalID, 
-    indexQandA = 0, 
-    answered = false, 
-    correct, 
-    triviaGame = [{ 
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var unansweredQuestions = 0;
+var timeRemaining = 10;
+var intervalID;
+var indexQandA = 0; 
+var answered = false; 
+var correct;
+var triviaGame = [{
         question: "What is the name for a dog created by crossing a Labrador Retriever and a Poodle?",
         answer: ["labbypoodle", "labradoodle", "poodlelab", "poodledoodle"],
         correct: "1", 
@@ -54,9 +54,13 @@ var correctAnswers = 0,
 
     }]; 
 
-
-}); 
-
+function startGame() {
+        $(".start-button").remove();
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        unansweredQuestions = 0;
+        loadQandA();
+    }
 
 function loadQandA() {
     answered = false;   
@@ -70,14 +74,85 @@ function loadQandA() {
     $(".question").html(question);  
     for (var i = 0; i < 4; i++) {
         var answer = triviaGame[indexQandA].answer[i];
-        $(".answers").append('<h4 class = answersAll id=' + i '>' + answer + '</h4>'); 
+        $('.answers').append('<h4 class= answersAll id=' + i + '>' + answer + '</h4>');
+    }
+    $("h4").click(function () {
+        var id = $(this).attr('id');
+        // alert(id);
+        if (id === correct) {
+            answered = true; // stops the timer
+            // alert("correct answer");
+            $('.question').text("THE ANSWER IS: " + triviaGame[indexQandA].answer[correct]);
+            correctAnswer();
+        } else {
+            answered = true; //stops the timer
+            // alert("incorrect answer");
+            $('.question').text("YOU CHOSE: " + triviaGame[indexQandA].answer[id] + ".....HOWEVER THE ANSWER IS: " + triviaGame[indexQandA].answer[correct]);
+            incorrectAnswer();
+        }
+    });
+}
+
+function timer() {
+    if (timeRemaining === 0) {
+        answered = true;
+        clearInterval(intervalID);
+        $('.question').text("THE CORRECT ANSWER IS: " + triviaGame[indexQandA].answer[correct]);
+        unAnswered();
+    } else if (answered === true) {
+        clearInterval(intervalID);
+    } else {
+        timeRemaining--;
+        $('.timeRemaining').text('YOU HAVE ' + timeRemaining + ' SECONDS TO CHOOSE');
     }
 }
 
-function startGame(){
-    $(".start-button").remove();    
-    correctAnswers = 0; 
-    incorrectAnswers = 0;   
-    unansweredQuestions = 0;    
-    loadQandA();    
+function correctAnswer() {
+    correctAnswers++;
+    $('.timeRemaining').text("YOU HAVE ANSWERED CORRECTLY!")
+    resetRound();
 }
+
+function incorrectAnswer() {
+    incorrectAnswers++;
+    $('.timeRemaining').text("YOU HAVE ANSWERED INCORRECTLY!")
+    resetRound();
+
+}
+
+function unAnswered() {
+    unansweredQuestions++;
+    $('.timeRemaining').text("YOU FAILED TO CHOOSE AN ANSWER")
+    resetRound();
+}
+
+function resetRound() {
+    $('.answersAll').remove();
+    $('.answers').append('<img class=answerImage width="150" height="150" src="' + triviaGame[indexQandA].image + ' ">'); // adds answer image
+    indexQandA++; // increments index which will load next question when loadQandA() is called again
+    if (indexQandA < triviaGame.length) {
+        setTimeout(function () {
+            loadQandA();
+            $('.answerImage').remove();
+        }, 5000); // removes answer image from previous round
+    } else {
+        setTimeout(function () {
+            $('.question').remove();
+            $('.timeRemaining').remove();
+            $('.answerImage').remove();
+            $('.answers').append('<h4 class= answersAll end>CORRECT ANSWERS: ' + correctAnswers + '</h4>');
+            $('.answers').append('<h4 class= answersAll end>INCORRECT ANSWERS: ' + incorrectAnswers + '</h4>');
+            $('.answers').append('<h4 class= answersAll end>UNANSWERED QUESTIONS: ' + unansweredQuestions + '</h4>');
+            setTimeout(function () {
+                location.reload();
+            }, 7000);
+        }, 5000);
+    }
+};
+
+$('.startButton').on("click", function () {
+    $('.startButton');
+    startGame();
+
+});
+});
