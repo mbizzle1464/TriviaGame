@@ -7,7 +7,7 @@ $(document).ready(function () {
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var unansweredQuestions = 0;
-var timeRemaining = 10;
+var timeRemaining = 15;
 var intervalID;
 var indexQandA = 0; 
 var answered = false; 
@@ -54,6 +54,9 @@ var triviaGame = [{
 
     }]; 
 
+
+// Functions for the game ---------------------------------------------------------------------
+// This function starts the game
 function startGame() {
         $(".start-button").remove();
         correctAnswers = 0;
@@ -62,13 +65,22 @@ function startGame() {
         loadQandA();
     }
 
+// This function loads the Questions and Answers
 function loadQandA() {
+    // This will set the variable answered to false, timeRemaining to 15
+    // and we are setting variable intervalID to setInterval to a timer and to countdown 1000ms 
     answered = false;   
-    timeRemaining = 10;
+    timeRemaining = 15;
     intervalID = setInterval (timer, 1000); 
+
+    // we create an if/else statement 
     if (answered === false) { 
         timer();    
     } 
+    // This line is indicating that if answered is false, then the correct variable will load the 
+    //correct variable from the triviaGame object variable into the indexQandA array. 
+    // We will then create a question variable to do the same thing for the question. 
+    // We will post the variable question 
     correct = triviaGame[indexQandA].correct;   
     var question = triviaGame[indexQandA].question; 
     $(".question").html(question);  
@@ -82,7 +94,7 @@ function loadQandA() {
         if (id === correct) {
             answered = true; // stops the timer
             // alert("correct answer");
-            $('.question').text("THE ANSWER IS: " + triviaGame[indexQandA].answer[correct]);
+            $('.question').text("Yo, the answer is fo shizzle: " + triviaGame[indexQandA].answer[correct]);
             correctAnswer();
         } else {
             answered = true; //stops the timer
