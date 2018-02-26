@@ -1,9 +1,12 @@
+body { 
+    background-color: #333F48;  
+}
 .jumbotron {
     margin-top: 20px;   
-    background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;   
-    background-size: 100%;    
-    color: #FF00FF;
+    background: url("../images/background.jpg") no-repeat center center;
+    background-size: cover;   
+    background-color: #c1c5c8;  
+    color: #ff4300;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -12,6 +15,16 @@
     /* Fallback for browsers do NOT support vh unit */
     min-height: 100vh;
     /* These two lines are counted as one :-)       */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.container section {
+    flex: 1;
+    width: 100%
 }
 
 .btn-danger,
@@ -23,17 +36,42 @@
 }
 
 .btn-danger:active {
-    background-color: #FF00FF;
-    border-color: #FF00FF;
+    background-color: #ff4300;
+    border-color: #ff4300;
     font-family: 'Open Sans', sans-serif;
 }
 .btn-danger:active:hover {
-    background-color: #FF00FF;
-    border-color: #FF00FF;
+    background-color: #ff4300;
+    border-color: #ff4300;
     font-family: 'Open Sans', sans-serif;
 }
 .btn-danger:active:focus {
-    background-color: #FF00FF;
-    border-color: #FF00FF;
+    background-color: #ff4300;
+    border-color: #ff4300;
     font-family: 'Open Sans', sans-serif;
+}
+
+.timeRemaining {
+   color: #333F48;  
+}
+.question, .answers, .timeRemaining {
+    text-align: center;
+    text-justify: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+.question {
+    color: #ff4300; 
+    font-weight: bold; 
+}
+.answers {
+    cursor: pointer;
+}
+
+.timeRemaining {
+    color: #333F48;
+}
+
+.answerImage {
+    width: 100%;    
+    height: auto;   
 }
