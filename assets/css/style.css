@@ -1,13 +1,22 @@
 body { 
     background-color: #333F48;  
 }
-.jumbotron {
+.jumbotron { 
+    position: relative;
     margin-top: 20px;   
     background: url("../images/background.jpg") no-repeat center center;
     background-size: cover;   
     background-color: #c1c5c8;  
     color: #ff4300;
     font-family: 'Open Sans', sans-serif;
+}
+.push-to-bottom {
+    text-align: center; 
+    display: block; 
+    position: absolute; 
+    bottom: 10;  
+    margin: 0 auto;     
+
 }
 
 .vertical-center {
@@ -51,6 +60,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+
 .timeRemaining {
    color: #333F48;  
 }
@@ -65,8 +75,18 @@ body {
 }
 .answers {
     cursor: pointer;
-}
 
+}
+.answersAll { 
+    border-radius: 5px;    
+    background-color: #333F48;
+    height: 75px;   
+    text-align: center; 
+    padding-top: 30px;     
+}
+.answersAll:hover {
+    background-color: #00bfd6;  
+}
 .timeRemaining {
     color: #333F48;
 }

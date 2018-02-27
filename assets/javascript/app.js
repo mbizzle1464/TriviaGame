@@ -62,13 +62,32 @@ var triviaGame = [{
 
     }]; 
 
+    // Create an audio element with JavaScript
+    var audioElement = document.createElement("audio");
+
+    // Set it's source to the location
+    // of our Captain Planet theme song file.
+    audioElement.setAttribute("src", "assets/audio/theme.mp3");
+
+    // Theme Button
+    $(".theme-button").on("click", function () {
+        audioElement.play();
+    });
+
+    // Pause Button
+    $(".pause-button").on("click", function () {
+        audioElement.pause();
+    });
 
 // Functions for the game ---------------------------------------------------------------------
 // This function starts the game
 function startGame() {
         $(".start-button").remove();
         $("h1").remove();   
+        $(".theme-button").remove();
+        $(".pause-button").remove();
         $(".jumbotron").css("background-image", "none");
+        audioElement.pause();
         correctAnswers = 0;
         incorrectAnswers = 0;
         unansweredQuestions = 0;
@@ -112,14 +131,18 @@ function loadQandA() {
         //then state the answer and run either the correctAnswer or incorrectAnswer functions.  
         if (id === correct) {
             answered = true; // stops the timer
+            audioElement.setAttribute("src", "assets/audio/butters.mp3");
             // alert("correct answer");
             $('.question').text(triviaGame[indexQandA].answer[correct] + ". You member!");
             correctAnswer();
+            audioElement.play();
         } else {
             answered = true; //stops the timer
+            audioElement.setAttribute("src", "assets/audio/stupid.mp3");
             // alert("incorrect answer");
             $('.question').text(triviaGame[indexQandA].answer[id] + "?.....guess you didn't member. The correct answer is: " + triviaGame[indexQandA].answer[correct] + ".");
             incorrectAnswer();
+            audioElement.play();
         }
     });
 }
@@ -129,10 +152,13 @@ function timer() {
     if (timeRemaining === 0) {
         answered = true;
         clearInterval(intervalID);
+        audioElement.setAttribute("src", "assets/audio/dumb.mp3");
         $('.question').text("Member: " + triviaGame[indexQandA].answer[correct] + "!");
+        audioElement.play();
         unAnswered();
     } else if (answered === true) {
         clearInterval(intervalID);
+        
     } else {
         timeRemaining--;
         $('.timeRemaining').text('You have ' + timeRemaining + ' seconds to member.');
@@ -142,7 +168,7 @@ function timer() {
 // This function creates the conditions to increment the correct answers varaible while also reseting the round. 
 function correctAnswer() {
     correctAnswers++;
-    $('.timeRemaining').text("Oh, you member!")
+    $('.timeRemaining').text("Oh yeah, I member!")
     resetRound();
 }
 
@@ -169,6 +195,7 @@ function resetRound() {
     $('.answers').append('<img class=answerImage img-responsive src="' + triviaGame[indexQandA].image + ' ">'); 
     // increments index which will load next question when loadQandA() is called again
     indexQandA++; 
+    // Creates If else statement to provide the conditions necessary to stop asking for questions once the trivia game object variable is asked
     if (indexQandA < triviaGame.length) {
         setTimeout(function () {
             loadQandA();
@@ -176,6 +203,7 @@ function resetRound() {
         }, 5000); // removes answer image from previous round
     } else {
         setTimeout(function () {
+            audioElement.setAttribute("src", "assets/audio/funny.mp3");
             $('.question').remove();
             $('.timeRemaining').remove();
             $('.answerImage').remove();
@@ -183,7 +211,8 @@ function resetRound() {
             $('.answers').append('<h4 class= answersAll end>INCORRECT MEMBERS: ' + incorrectAnswers + '</h4>');
             $('.answers').append('<h4 class= answersAll end>UNANSWERED QUESTIONS: ' + unansweredQuestions + '</h4>');
              $('.answers').append('<img class=answerImage img-responsive width="400" height="300" src="assets/images/member.jpg">');
-            setTimeout(function () {
+            audioElement.play();
+             setTimeout(function () {
                 location.reload();
             }, 7000);
         }, 5000);
