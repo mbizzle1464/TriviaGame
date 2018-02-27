@@ -55,11 +55,53 @@ var triviaGame = [{
         image: ("assets/images/stan.gif")
 
     }, {
+        question: "Where does Cartman 's Grandma live?",
+        answer: ["Hollywood", "Canada", "California", "Nebraska"],
+        correct: "3",
+        image: ("assets/images/grandma.gif")
+
+    },{
+        question: "Who is the dad that Randy fight in the Little League state championship?",
+        answer: ["Gerald", "Mr. Garrison", "Mr. Hat", "The Bat-Dad"],
+        correct: "3",
+        image: ("assets/images/batdad.gif")
+
+    }, {
+        question: "In South Park, what religion is first allowed into Heaven, before the episode 'Best Friends Forever'?",
+        answer: ["Mormons", "Buddhists", "Christians", "Atheists"],
+        correct: "0",
+        image: ("assets/images/mormon.gif")
+
+    }, {
+        question: "Which teacher never wears a bra?",
+        answer: ["Mrs. Dreibel", " Ms. Claridge", "Ms. Choksondik", "Ms. Stevenson"],
+        correct: "2",
+        image: ("assets/images/teacher.gif")
+
+    }, {
+        question: "Who is the main character in IMAGINATIONland?",
+        answer: ["Jesus Christ", "Butters", "Mayor of Imaginationland", "Aslan the Lion"],
+        correct: "1",
+        image: ("assets/images/butters.gif")
+
+    },{
+        question: "Who created the Woodland Critters",
+        answer: ["Eric Cartman", "Stan Marsh", "Kyle Broflovski", "Kurt Russell"],
+        correct: "0",
+        image: ("assets/images/woodland.gif")
+
+    }, {
+        question: "Where does Cartman want to be a pirate?",
+        answer: ["Somalia", "France", "Caribbean", "India"],
+        correct: "0",
+        image: ("assets/images/pirates.gif")
+
+    },{
         question: "What is the name of the club Chef joins in the episode 'The Return of Chef?'",
         answer: ["Unified Atheist League", "Allied Atheist Alliance", "Super Adventure Club", "Hare Club for Men"],
         correct: "2",
         image: ("assets/images/adventure.gif")
-
+        
     }]; 
 
     // Create an audio element with JavaScript
