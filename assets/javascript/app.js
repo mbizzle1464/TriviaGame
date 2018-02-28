@@ -14,7 +14,7 @@ var answered = false;
 var correct;
 var triviaGame = [{
         question: " In the episode 'The Death of Eric Cartman', why do the boys ignore Cartman?",
-        answer: ["He called Kyle a Jew", "He ate the skins off their KFC Chicken", "He calls Wendy a skinny bitch", "Cartman bets the guys he can sell more records with a Christian Rock Band"],
+        answer: ["He called Kyle a Jew", "He ate the skins off their KFC Chicken", "He calls Wendy a skinny bitch", "Cartman bets he can sell more records"],
         correct: "1", 
         image: ("assets/images/kfc.gif")
 
