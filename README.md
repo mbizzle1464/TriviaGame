@@ -1,2 +1,15 @@
-# TriviaGame
-You'll create a trivia game that shows only one question until the player answers it or their time runs out. If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.  The scenario is similar for wrong answers and time-outs.   If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question. If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.   On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
+## Trivia Game (Challenge - Recommended)
+
+## Trivia Requirements
+ 
+1. "Respect ma authoritah!" You think you know know everything about South park? 
+
+2. Clone this repository and open the index.html file to enjoy the fun or click (https://mbizzle1464.github.io/TriviaGame/)
+
+3. Press the start button to get started.  The button will kick off the game automatically. 
+
+4. You have 15 seconds per question to answer the question. 
+
+5. Don't worry about reloading the page... it will do it all by itself. 
+
+6. Good luck! 
